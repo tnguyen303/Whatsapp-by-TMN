@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" 
+      type="image/png" 
+      href="images/favicon.png">
+    <title>Whats@pp - by TMN</title>
+  </head>
+
+  <body>
+      <div
+        class="row mt-2 ml-2 mr-2"
+        id="welcome"
+        style="font-size: 25px; font-weight: bold;"
+      ></div>
+      <hr class="row ml-2 mr-2" />
+      <div class="row ml-2 mr-2" id="select-container"></div>
+
+      <div class="row ml-2 mr-2"><div id="content"></div></div>
+
+      <form class="fixed-bottom ml-2 mr-2" id="msg-form">
+        <div class="row">
+          <div class="col">
+            <input
+              class="form-control form-control-sm"
+              id="message"
+              type='text'
+              placeholder="Type here, enter to send"
+            />
+          </div>
+          <div class="col-3">
+            <button class="btn btn-primary" id="send-msg">Send</button>
+          </div>
+        </div>
+      </form>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="js/chat.js"></script>
+  </body>
+</html>

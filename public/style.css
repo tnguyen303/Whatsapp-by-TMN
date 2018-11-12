@@ -1,0 +1,32 @@
+body {
+  font-family: "Roboto", sans-serif;
+  /* background-color: gray; */
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+select{
+  margin-bottom: 30px;
+}
+
+#content{
+  line-height: 1.6;
+}
+
+.message{
+  border-radius: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.from-you{
+  background-color: rgb(158, 214, 233);
+}
+
+.from-others{
+  background-color: rgb(196, 196, 196);
+}
+
