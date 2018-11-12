@@ -38,10 +38,12 @@ const renderMessageList = function(dataList){
   if (isNotEmpty(dataList)) {
     dataList.forEach(e => {
       if(e.sender===sender){
-        $("#content").append(`<div class='message from-you float-right'>You: ${e.message} </div><br />`)
+        $("#content").append(`<div class='message from-you float-right'>You: ${e.message} </div><br />`);
       } else{
-        $("#content").append(`<div class='message from-others float-left'>${e.sender}: ${e.message} </div><br />`)
+        $("#content").append(`<div class='message from-others float-left'>${e.sender}: ${e.message} </div><br />`);
       }
+      $("#content").animate({ scrollTop: $(this).height() }, "fast");
+      return false;
     }
     );
   }
@@ -49,7 +51,6 @@ const renderMessageList = function(dataList){
 
 //display message on private sockets
 socket.on("emit-message", function(data) {
-  // $("#content").append(`${data.sender}: ${data.message} <br />`);
   renderMessageList(data);
 });
 
@@ -79,7 +80,6 @@ const sendMessage = function(event) {
       //if recipient field is not valid, then throw error
       $("#content").append("<span style='color: red;'>Please select recipient!</span> <br />");
     }
-    
   }
 };
 

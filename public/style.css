@@ -1,5 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
+  height: 100%;
+  overflow: hidden;
   /* background-color: gray; */
 }
 
@@ -14,6 +16,7 @@ select{
 
 #content{
   line-height: 1.6;
+  overflow-y: scroll;
 }
 
 .message{
