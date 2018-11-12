@@ -34,11 +34,23 @@ function isNotEmpty(obj) {
   return false;
 }
 
-
+const render = function(dataList){
+  if (isNotEmpty(dataList)) {
+    dataList.forEach(e => {
+      if(e.sender===sender){
+        $("#content").append(`<div class='message from-you'>You: ${e.message} </div><br />`)
+      } else{
+        $("#content").append(`<div class='message from-others'>${e.sender}: ${e.message} </div><br />`)
+      }
+    }
+    );
+  }
+};
 
 //display message on private sockets
 socket.on("emit-message", function(data) {
-  $("#content").append(`${data.sender}: ${data.message} <br />`);
+  // $("#content").append(`${data.sender}: ${data.message} <br />`);
+  render(data);
 });
 
 const sendMessage = function(event) {

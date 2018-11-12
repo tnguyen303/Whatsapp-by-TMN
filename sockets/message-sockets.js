@@ -24,8 +24,10 @@ module.exports = function(io) {
       console.log(data);
       const socket1 = users[data.sender];
       const socket2 = users[data.recipient];
-      socket1.emit('emit-message', data);
-      socket2.emit('emit-message', data);
+      //convert to array for render function
+      const dataList = [data];
+      socket1.emit('emit-message', dataList);
+      socket2.emit('emit-message', dataList);
     });
 
   });
