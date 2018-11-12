@@ -34,13 +34,13 @@ function isNotEmpty(obj) {
   return false;
 }
 
-const render = function(dataList){
+const renderMessageList = function(dataList){
   if (isNotEmpty(dataList)) {
     dataList.forEach(e => {
       if(e.sender===sender){
-        $("#content").append(`<div class='message from-you'>You: ${e.message} </div><br />`)
+        $("#content").append(`<div class='message from-you float-right'>You: ${e.message} </div><br />`)
       } else{
-        $("#content").append(`<div class='message from-others'>${e.sender}: ${e.message} </div><br />`)
+        $("#content").append(`<div class='message from-others float-left'>${e.sender}: ${e.message} </div><br />`)
       }
     }
     );
@@ -50,7 +50,7 @@ const render = function(dataList){
 //display message on private sockets
 socket.on("emit-message", function(data) {
   // $("#content").append(`${data.sender}: ${data.message} <br />`);
-  render(data);
+  renderMessageList(data);
 });
 
 const sendMessage = function(event) {
@@ -98,16 +98,7 @@ const startChat = function(event) {
   } else{
     $.ajax({ url: `/api/chat/${sender}/${recipient}`, method: "GET" }).then(
       function(data) {
-        if (isNotEmpty(data)) {
-          data.forEach(e => {
-            if(e.sender===sender){
-              $("#content").append(`<div class='message from-you'>You: ${e.message} </div><br />`)
-            } else{
-              $("#content").append(`<div class='message from-others'>${e.sender}: ${e.message} </div><br />`)
-            }
-          }
-          );
-        }
+        renderMessageList(data);
       }
     )
     .catch(function(err){
