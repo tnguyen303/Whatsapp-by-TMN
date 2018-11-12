@@ -42,6 +42,7 @@ const renderMessageList = function(dataList){
       } else{
         $("#content").append(`<div class='message from-others float-left'>${e.sender}: ${e.message} </div><br />`);
       }
+      //scroll to bottom of content div
       $("#content").animate({ scrollTop: $(this).height() }, "fast");
       return false;
     }
