@@ -51,9 +51,8 @@ const renderMessageList = function(dataList) {
         );
       }
     });
-    //scroll to bottom of content div
-    $("#content").animate({ scrollTop: $(this).height() }, "fast");
-    return false;
+    //scroll to bottom of content div to position 1000px
+    $("#content").scrollTop(1000);
   }
 };
 
