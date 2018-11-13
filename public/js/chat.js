@@ -34,19 +34,26 @@ function isNotEmpty(obj) {
   return false;
 }
 
-const renderMessageList = function(dataList){
+const renderMessageList = function(dataList) {
   if (isNotEmpty(dataList)) {
     dataList.forEach(e => {
-      if(e.sender===sender){
-        $("#content").append(`<div class='message from-you float-right'>You: ${e.message} </div><br />`);
-      } else{
-        $("#content").append(`<div class='message from-others float-left'>${e.sender}: ${e.message} </div><br />`);
+      if (e.sender === sender) {
+        $("#content").append(
+          `<div class='message from-you float-right'>You: ${
+            e.message
+          } </div><br />`
+        );
+      } else {
+        $("#content").append(
+          `<div class='message from-others float-left'>${e.sender}: ${
+            e.message
+          } </div><br />`
+        );
       }
-      //scroll to bottom of content div
-      $("#content").animate({ scrollTop: $(this).height() }, "fast");
-      return false;
-    }
-    );
+    });
+    //scroll to bottom of content div
+    $("#content").animate({ scrollTop: $(this).height() }, "fast");
+    return false;
   }
 };
 
@@ -57,13 +64,15 @@ socket.on("emit-message", function(data) {
 
 const sendMessage = function(event) {
   const message = $("#message").val();
-  $('#message').val('');
+  $("#message").val("");
   event.preventDefault();
   if (message.length === 0) {
-    $("#content").append("<span style='color: red;'>Message cannot be empty!</span> <br />");
+    $("#content").append(
+      "<span style='color: red;'>Message cannot be empty!</span> <br />"
+    );
   } else {
     //check if recipient field is valid, then send message
-    if(recipient){
+    if (recipient) {
       const newMessage = {
         message: message,
         sender: sender,
@@ -77,34 +86,36 @@ const sendMessage = function(event) {
       });
       //send message to server under "new-message" tag
       socket.emit("new-message", newMessage);
-    } else{
+    } else {
       //if recipient field is not valid, then throw error
-      $("#content").append("<span style='color: red;'>Please select recipient!</span> <br />");
+      $("#content").append(
+        "<span style='color: red;'>Please select recipient!</span> <br />"
+      );
     }
   }
 };
 
 $("#send-msg").on("click", sendMessage);
 
-
 const startChat = function(event) {
   //get the selected text from drop down
   //put code to empty chat area here
-  $('#content').empty();
+  $("#content").empty();
   recipient = $("select")
     .find(":selected")
     .text();
-  if(recipient === sender){
-    $("#content").append("<span style='color: red;'>Recipient cannot be yourself!</span> <br />");
-  } else{
-    $.ajax({ url: `/api/chat/${sender}/${recipient}`, method: "GET" }).then(
-      function(data) {
+  if (recipient === sender) {
+    $("#content").append(
+      "<span style='color: red;'>Recipient cannot be yourself!</span> <br />"
+    );
+  } else {
+    $.ajax({ url: `/api/chat/${sender}/${recipient}`, method: "GET" })
+      .then(function(data) {
         renderMessageList(data);
-      }
-    )
-    .catch(function(err){
-      console.log(err);
-    })
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 };
 
