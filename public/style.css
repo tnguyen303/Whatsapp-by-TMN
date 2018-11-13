@@ -2,7 +2,7 @@ body {
   font-family: "Roboto", sans-serif;
   height: 100%;
   overflow: hidden;
-  background-image: url('images/background.png');
+  background-image: url('images/background.jpg');
 }
 
 h1 {
@@ -20,9 +20,12 @@ select{
 }
 
 .message{
+  /* position: relative; */
+  /* right: 10px; */
   border-radius: 12px;
   padding-left: 8px;
   padding-right: 8px;
+  /* margin-top: 5px; */
 }
 
 .from-you{
@@ -32,4 +35,3 @@ select{
 .from-others{
   background-color: rgb(196, 196, 196);
 }
-

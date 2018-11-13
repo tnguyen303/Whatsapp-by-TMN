@@ -21,7 +21,6 @@ module.exports = function(io) {
 
     //emit only to private sockets
     socket.on("new-message", function(data){
-      console.log(data);
       const socket1 = users[data.sender];
       const socket2 = users[data.recipient];
       //convert to array for render function
