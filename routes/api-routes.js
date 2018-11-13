@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Message = require("../models/Message");
 const Chat = require("../models/Chat");
+const User = require('../models/User');
 // const db = require('../models')
 
 module.exports = function(app) {
@@ -46,13 +47,14 @@ module.exports = function(app) {
     })
       .populate("messageList")
       .then(function(data) {
-        console.log(data);
         res.json(data.messageList);
       })
       .catch(function(err){
         console.log(err);
       })
   });
+
+  
 };
 
 function isNotEmpty(obj) {
